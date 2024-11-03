@@ -28,3 +28,30 @@ function looseChange(cents){
 }
 
 // or
+
+const currency = [
+  { label: 'Quarters', amount: 25 },
+  { label: 'Dimes',    amount: 10 },
+  { label: 'Nickels',  amount:  5 },
+  { label: 'Pennies',  amount:  1 },
+]
+
+function looseChange (cents) {
+  const wallet = {
+    Quarters: 0,
+    Dimes: 0,
+    Nickels: 0,
+    Pennies: 0,
+  }
+
+  let balance = cents
+  
+  for (const {label, amount} of currency) {
+    while (balance >= amount) {
+      balance -= amount
+      wallet[label] += 1
+    }
+  }
+
+  return wallet
+}
